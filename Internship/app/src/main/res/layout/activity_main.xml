@@ -7,87 +7,99 @@
     tools:context=".MainActivity">
 
     <View
-        android:id="@+id/colorView"
-        android:layout_width="321dp"
-        android:layout_height="183dp"
-        android:text="colorView"
-        android:background="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
+        android:id="@+id/view_color_panel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_color_panel" />
+
+    <!-- Color Red -->
+    <TextView
+        android:id="@+id/text_r"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/text_r"
+        android:layout_marginTop="@dimen/text_margin_top"
+        app:layout_constraintTop_toBottomOf="@+id/view_color_panel"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" />
 
     <SeekBar
-        android:id="@+id/seekBarRed"
-        android:layout_width="285dp"
-        android:layout_height="68dp"
-        android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
+        android:id="@+id/seek_bar_red"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/seek_bar_margin_start"
+        app:layout_constraintTop_toTopOf="@id/text_r"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+        app:layout_constraintStart_toEndOf="@+id/text_r" />
+
+    <!-- Color Green -->
+    <TextView
+        android:id="@+id/text_g"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/text_g"
+        android:layout_marginTop="@dimen/text_margin_top"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/text_r" />
 
     <SeekBar
-        android:id="@+id/seekBarGreen"
-        android:layout_width="285dp"
-        android:layout_height="68dp"
-        android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.668" />
+        android:id="@+id/seek_bar_green"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/seek_bar_margin_start"
+        app:layout_constraintTop_toTopOf="@id/text_g"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+        app:layout_constraintStart_toEndOf="@id/text_g" />
+
+    <!-- Color Blue -->
+    <TextView
+        android:id="@+id/text_b"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/text_b"
+        android:layout_marginTop="@dimen/text_margin_top"
+        app:layout_constraintTop_toBottomOf="@id/text_g"
+        app:layout_constraintStart_toStartOf="@+id/guideline_start" />
 
     <SeekBar
-        android:id="@+id/seekBarBlue"
-        android:layout_width="285dp"
-        android:layout_height="68dp"
-        android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.859" />
+        android:id="@+id/seek_bar_blue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/seek_bar_margin_start"
+        app:layout_constraintTop_toTopOf="@id/text_b"
+        app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+        app:layout_constraintStart_toEndOf="@id/text_b" />
 
-    <TextView
-        android:id="@+id/colorR"
+    <!-- Guideline -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_color_panel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
 
-    <TextView
-        android:id="@+id/colorG"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="G"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.653" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="50dp" />
 
-    <TextView
-        android:id="@+id/colorB"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="B"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="40dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

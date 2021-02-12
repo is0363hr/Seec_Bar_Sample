@@ -3,43 +3,37 @@ package com.example.internship
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
-import android.view.View
 import android.graphics.Color
+import com.example.internship.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(){
-
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private var r = 0
     private var g = 0
     private var b = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val seekBarRed: SeekBar = findViewById(R.id.seekBarRed)
-        val seekBarGreen: SeekBar = findViewById(R.id.seekBarGreen)
-        val seekBarBlue: SeekBar = findViewById(R.id.seekBarBlue)
-
-        setupSeekBar(seekBarRed, "r")
-        setupSeekBar(seekBarGreen, "g")
-        setupSeekBar(seekBarBlue, "b")
+        listOf(binding.seekBarRed, binding.seekBarGreen, binding.seekBarBlue).forEach {
+            setupSeekBar(it)
+        }
     }
 
-    private fun setupSeekBar(seekBar: SeekBar, colorFlag:String)
-    {
-        seekBar.progress = 0
-        seekBar.max = 255
+    private fun setupSeekBar(seekBar: SeekBar) {
+        seekBar.progress = SEEK_BAR_PROGRESS
+        seekBar.max = SEEK_BAR_MAX
         seekBar.setOnSeekBarChangeListener(
             object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                    when(colorFlag){
-                        "r" -> r = progress
-                        "g" -> g = progress
-                        "b" -> b = progress
+                    when (seekBar) {
+                        binding.seekBarRed -> r = progress
+                        binding.seekBarGreen -> g = progress
+                        binding.seekBarBlue -> b = progress
                     }
-
-                    val colorView: View = findViewById(R.id.colorView)
-                    colorView.setBackgroundColor(Color.rgb(r, g, b))
+                    binding.viewColorPanel.setBackgroundColor(Color.rgb(r, g, b))
                 }
 
                 override fun onStartTrackingTouch(seekBar: SeekBar) {
@@ -48,5 +42,10 @@ class MainActivity : AppCompatActivity(){
                 override fun onStopTrackingTouch(seekBar: SeekBar) {
                 }
             })
+    }
+
+    companion object {
+        private const val SEEK_BAR_PROGRESS = 0
+        private const val SEEK_BAR_MAX = 255
     }
 }
